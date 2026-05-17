@@ -1,0 +1,7 @@
+.pages-out/
+public/
+dist/
+node_modules/
+.wrangler/
+.env
+.env.*

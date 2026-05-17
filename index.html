@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#9D8971">
+<meta name="description" content="Kami & Gabriel — an enchanted garden wedding in New Orleans, June 6, 2026.">
+<title>Kami & Gabriel · June 6, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Instrument+Serif:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Palette papeterie — homepage & pages intérieures */
+  --noir-brun:       #271C0F;
+  --olive-antique:   #57492B;
+  --beige-taupe:     #9D8971;
+  --brun-rose:       #8C755F;
+  --terre-sienne:    #735E4A;
+  --rose-poudre:     #C5A89F;
+  --nude-poussiere:  #B4998B;
+  --vert-mousse:     #463C23;
+  --olive-brunie:    #47361E;
+  --vert-foret:      #37420F;
+  --olive-dore:      #836C39;
+  --prune-noircie:   #613D42;
+  --cream-light:     #f2ebe4;
+  --shadow-soft:     rgba(39, 28, 15, 0.22);
+  --shadow-deep:     rgba(39, 28, 15, 0.38);
+  /* Alias (compat. styles existants) */
+  --ink:             var(--noir-brun);
+  --cream:           var(--cream-light);
+  --parchment:       var(--brun-rose);
+  --gold:            var(--olive-dore);
+  --gold-lt:         var(--rose-poudre);
+  --gold-dim:        var(--terre-sienne);
+  --rose-dust:       var(--prune-noircie);
+  --olive:           var(--olive-antique);
+  --olive-deep:      var(--vert-mousse);
+  --olive-mid:       var(--olive-brunie);
+  --olive-pale:      var(--nude-poussiere);
+  --wine:            var(--prune-noircie);
+  --calla:           var(--olive-brunie);
+  --mauve-muted:     var(--terre-sienne);
+  --font-script: "Great Vibes", cursive;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-hp-caps: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  --nav-olive: var(--olive-antique);
+  --nav-olive-deep: var(--olive-brunie);
+  --nav-cream: var(--cream-light);
+  --site-nav-h: 78px;
+  --hp-linen: var(--beige-taupe);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--beige-taupe);
+  background-image:linear-gradient(175deg,#b5a38d 0%,var(--beige-taupe) 35%,#a8957f 100%);
+  color:var(--noir-brun);
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:1.02rem;
+  letter-spacing:0.01em;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 12% 8%, rgba(97, 61, 66, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 55% at 88% 85%, rgba(55, 66, 15, 0.14) 0%, transparent 52%),
+    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(39, 28, 15, 0.08) 0%, transparent 50%);
+  pointer-events:none;
+  z-index:0;
+}
+/* Subtle paper grain — Renaissance editorial */
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  opacity:0.045;
+  pointer-events:none;
+  z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+}
+
+/* BOTANICAL SIDE SVGS */
+.bot-side{position:fixed;top:var(--site-nav-h);bottom:0;width:160px;pointer-events:none;z-index:1;opacity:0.18;filter:drop-shadow(0 0 20px rgba(39,28,15,0.25));}
+.bot-side.left{left:0;}
+.bot-side.right{right:0;transform:scaleX(-1);}
+
+/* NAV — olive bar ; ligne crème = fin de barre ; symbole au-dessus (chevauche la ligne) */
+.site-nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  overflow:visible;
+  box-shadow:none;
+}
+.site-nav__bar{
+  display:flex;flex-direction:column;
+  max-width:100%;
+}
+.site-nav__skin{
+  background:var(--nav-olive);
+  background-image:linear-gradient(180deg, var(--nav-olive) 0%, var(--nav-olive-deep) 100%);
+}
+.site-nav__links{
+  display:flex;justify-content:space-evenly;align-items:center;
+  gap:6px;padding:12px 10px 8px;
+}
+.site-nav__foot{
+  position:relative;
+  flex-shrink:0;
+  width:100%;
+  background:transparent;
+}
+.site-nav__foot-line{
+  height:1px;width:100%;
+  background:var(--nav-cream);
+  opacity:0.95;
+  flex-shrink:0;
+}
+.site-nav__foot-mark{
+  position:absolute;
+  left:0;right:0;
+  bottom:0;
+  transform:translateY(50%);
+  width:100%;
+  height:clamp(22px,5vw,32px);
+  z-index:2;
+  pointer-events:none;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,0.35));
+}
+.site-nav__ornament{
+  display:block;width:100%;height:100%;
+}
+.site-nav__btn{
+  flex:1 1 0;max-width:180px;
+  background:none;border:none;cursor:pointer;
+  font-family:var(--font-serif);
+  font-size:0.68rem;font-weight:500;
+  letter-spacing:0.26em;text-transform:uppercase;
+  color:var(--nav-cream);
+  padding:6px 4px 10px;
+  position:relative;
+  opacity:0.88;
+  transition:opacity .25s,color .25s;
+  white-space:nowrap;text-align:center;
+}
+.site-nav__btn:hover{opacity:1;}
+.site-nav__btn:focus-visible{outline:1px solid var(--nav-cream);outline-offset:2px;}
+.site-nav__btn.active{opacity:1;font-weight:600;}
+.site-nav__btn.active::after{
+  content:'';position:absolute;left:50%;transform:translateX(-50%);
+  bottom:3px;width:min(100%,8.5rem);height:1px;background:var(--nav-cream);
+}
+.page{display:none;min-height:100vh;position:relative;z-index:1;}
+.page.active{display:block;}
+#page-invite.active{display:block;}
+body.hp-flatlight{
+  background:var(--hp-linen) !important;
+  background-image:none !important;
+  overflow:hidden;
+}
+body.hp-flatlight::before,body.hp-flatlight::after{display:none !important;}
+body.hp-flatlight .bot-side{opacity:0 !important;visibility:hidden;}
+/* —— Homepage : plein écran, image étirée (fill), bord haut = bord écran —— */
+#page-invite.page.active.hp-home{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  max-width:100vw;
+  min-height:100vh;
+  min-height:100dvh;
+  height:100vh;
+  height:100dvh;
+  padding:0!important;
+  margin:0;
+  overflow:hidden;
+  z-index:1;
+}
+.hp-home .hp-stage,
+.hp-home .hp-stage__inner,
+.hp-home .hp-stage__picture{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+}
+.hp-home .hp-stage__photo{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:fill;
+  object-position:center;
+  vertical-align:top;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+.close-btn{display:inline-block;margin-top:30px;font-family:var(--font-hp-caps);font-size:0.58rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--noir-brun);background:var(--rose-poudre);border:1px solid var(--nude-poussiere);padding:11px 30px;cursor:pointer;transition:all .35s;}
+.close-btn:hover{background:var(--olive-antique);color:var(--cream-light);border-color:var(--olive-brunie);}
+
+/* ═══ Pages intérieures (RSVP · Registry · Q&A) — thème papeterie ═══ */
+#page-rsvp,#page-registry,#page-qa{
+  min-height:100vh;
+  padding-top:calc(var(--site-nav-h) + 28px);
+  padding-bottom:64px;
+}
+.pwrap{max-width:940px;margin:0 auto;padding:24px 24px 48px;}
+.phero{text-align:center;margin-bottom:52px;}
+.eyebrow{
+  font-family:var(--font-hp-caps);font-size:0.58rem;letter-spacing:0.38em;text-transform:uppercase;
+  color:var(--prune-noircie);opacity:0.85;margin-bottom:14px;display:block;
+}
+.ptitle{
+  font-family:var(--font-script);font-size:clamp(2.8rem,8vw,4.2rem);
+  color:var(--prune-noircie);margin-bottom:16px;line-height:1.05;font-weight:400;
+}
+.ptitle--sub{font-size:clamp(2.2rem,6vw,3rem);}
+.grule{
+  width:min(120px,40%);height:1px;margin:0 auto 16px;
+  background:linear-gradient(90deg,transparent,var(--nude-poussiere),var(--olive-dore),var(--nude-poussiere),transparent);
+}
+.psub{
+  font-family:var(--font-serif);font-style:italic;font-size:1.06rem;
+  color:var(--terre-sienne);line-height:1.7;max-width:36em;margin:0 auto;
+}
+/* Carte type invitation (rose poudré, double bordure) */
+.suite-card{
+  position:relative;
+  background:linear-gradient(168deg,#d4b5ac 0%,var(--rose-poudre) 42%,#bfa192 100%);
+  border:1px solid var(--nude-poussiere);
+  outline:1px solid rgba(255,255,255,0.45);
+  outline-offset:7px;
+  box-shadow:0 18px 48px var(--shadow-soft),inset 0 1px 0 rgba(255,255,255,0.35);
+  padding:clamp(28px,5vw,44px) clamp(22px,4vw,40px);
+  color:var(--noir-brun);
+}
+.suite-card::before,.suite-card::after{
+  content:'';position:absolute;top:14px;bottom:14px;width:1px;
+  background:linear-gradient(180deg,transparent,rgba(115,94,74,0.35),transparent);
+  pointer-events:none;
+}
+.suite-card::before{left:18px;}
+.suite-card::after{right:18px;}
+.suite-card--olive{
+  background:linear-gradient(165deg,#6a5e48 0%,var(--vert-mousse) 55%,var(--olive-brunie) 100%);
+  color:var(--cream-light);border-color:var(--olive-dore);
+  outline-color:rgba(131,108,57,0.35);
+}
+.suite-success__title{font-family:var(--font-script);font-size:2.2rem;color:var(--prune-noircie);margin:12px 0;}
+
+/* ═══ STORY TIMELINE ═══ */
+.timeline{position:relative;}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(184,146,74,0.28) 8%,rgba(125,79,98,0.2) 50%,rgba(184,146,74,0.28) 92%,transparent);transform:translateX(-50%);}
+.tl-item{display:grid;grid-template-columns:1fr 40px 1fr;gap:0 24px;margin-bottom:56px;align-items:start;}
+.tl-item:nth-child(odd) .tl-c{grid-column:1;}.tl-item:nth-child(odd) .tl-d{grid-column:2;}.tl-item:nth-child(odd) .tl-e{grid-column:3;}
+.tl-item:nth-child(even) .tl-c{grid-column:3;order:3;}.tl-item:nth-child(even) .tl-d{grid-column:2;order:2;}.tl-item:nth-child(even) .tl-e{grid-column:1;order:1;}
+.tl-d{display:flex;justify-content:center;padding-top:22px;}
+.tl-dot{width:14px;height:14px;background:radial-gradient(circle at 30% 30%,var(--gold-lt),var(--gold));border-radius:50%;box-shadow:0 0 22px rgba(184,146,74,0.45);flex-shrink:0;}
+.tl-c{background:linear-gradient(145deg,rgba(76,18,40,0.2),rgba(10,4,8,0.55));border:0.5px solid rgba(184,146,74,0.16);padding:28px 30px;transition:border-color .35s,box-shadow .35s;box-shadow:inset 0 1px 0 rgba(255,220,180,0.04),0 12px 40px rgba(0,0,0,0.25);}
+.tl-c:hover{border-color:rgba(184,146,74,0.38);box-shadow:inset 0 1px 0 rgba(255,220,180,0.06),0 16px 48px rgba(0,0,0,0.35);}
+.tl-year{font-family:var(--font-display);font-size:0.52rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--mauve-muted);margin-bottom:10px;}
+.tl-title{font-family:var(--font-serif);font-style:italic;font-size:1.4rem;color:var(--gold-lt);margin-bottom:12px;}
+.tl-txt{font-family:var(--font-serif);font-size:1.02rem;line-height:1.9;color:var(--parchment);opacity:0.84;}
+
+/* PHOTO GRID */
+.photo-sec{margin-top:88px;}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:38px;}
+.pcell{position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(58,15,36,0.45),rgba(30,40,18,0.38));border:0.5px solid rgba(184,146,74,0.14);cursor:pointer;transition:all .4s;box-shadow:0 8px 32px rgba(0,0,0,0.35);}
+.pcell:first-child{grid-column:span 2;}
+.pcell::before{content:'';display:block;padding-top:75%;}
+.pcell:first-child::before{padding-top:56%;}
+.pcell:hover{border-color:rgba(184,146,74,0.4);transform:scale(1.012);box-shadow:0 16px 48px rgba(0,0,0,0.45);}
+.pinner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
+.picon{font-size:2rem;opacity:0.28;}
+.pcap{font-family:var(--font-serif);font-style:italic;font-size:0.82rem;color:var(--cream);opacity:0.4;text-align:center;padding:0 14px;}
+.pcell img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .55s;}
+.pcell:hover img{transform:scale(1.06);}
+.photo-hint{text-align:center;margin-top:22px;font-family:var(--font-serif);font-style:italic;color:var(--rose-dust);opacity:0.48;font-size:0.88rem;}
+
+/* ═══ REGISTRY — cartes imprimées ═══ */
+.reg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;margin-top:48px;}
+.reg-card{
+  background:linear-gradient(168deg,#d4b5ac 0%,var(--rose-poudre) 45%,#bfa192 100%);
+  border:1px solid var(--nude-poussiere);outline:1px solid rgba(255,255,255,0.4);outline-offset:5px;
+  padding:40px 26px 32px;text-align:center;display:block;cursor:pointer;text-decoration:none;
+  transition:transform .35s,box-shadow .35s,border-color .35s;position:relative;overflow:hidden;
+  box-shadow:0 14px 40px var(--shadow-soft),inset 0 1px 0 rgba(255,255,255,0.3);
+  color:var(--noir-brun);
+}
+.reg-card:nth-child(2){
+  background:linear-gradient(165deg,var(--brun-rose) 0%,#a08872 100%);
+  border-color:var(--terre-sienne);
+}
+.reg-card:nth-child(3){
+  background:linear-gradient(165deg,#5a5238 0%,var(--vert-mousse) 50%,var(--olive-brunie) 100%);
+  color:var(--cream-light);border-color:var(--olive-dore);outline-color:rgba(131,108,57,0.4);
+}
+.reg-card:hover{transform:translateY(-5px);box-shadow:0 22px 52px var(--shadow-deep);border-color:var(--olive-dore);}
+.reg-icon{font-size:2.4rem;margin-bottom:18px;display:block;opacity:0.88;}
+.reg-name{font-family:var(--font-script);font-size:2rem;color:var(--prune-noircie);margin-bottom:10px;line-height:1.1;}
+.reg-card:nth-child(3) .reg-name{color:var(--rose-poudre);}
+.reg-desc{font-family:var(--font-serif);font-style:italic;font-size:0.94rem;color:var(--terre-sienne);line-height:1.75;margin-bottom:22px;}
+.reg-card:nth-child(3) .reg-desc{color:var(--nude-poussiere);opacity:0.92;}
+.reg-cta{
+  display:inline-block;font-family:var(--font-hp-caps);font-size:0.54rem;letter-spacing:0.24em;text-transform:uppercase;
+  color:var(--noir-brun);border:1px solid var(--terre-sienne);padding:9px 20px;transition:all .35s;
+}
+.reg-card:hover .reg-cta{background:var(--olive-antique);color:var(--cream-light);border-color:var(--olive-brunie);}
+.reg-card:nth-child(3):hover .reg-cta{background:var(--prune-noircie);border-color:var(--prune-noircie);}
+.reg-note{
+  margin-top:48px;padding:30px 34px;
+  background:linear-gradient(90deg,rgba(197,168,159,0.45),rgba(157,137,113,0.25));
+  border:1px solid var(--nude-poussiere);border-left:3px solid var(--prune-noircie);
+  font-family:var(--font-serif);font-style:italic;font-size:1.02rem;line-height:1.95;color:var(--noir-brun);
+}
+
+/* ═══ FAQ / Q&A — accordéon papeterie ═══ */
+.faq-list{margin-top:48px;display:flex;flex-direction:column;gap:10px;}
+.faq-item{
+  border:1px solid var(--nude-poussiere);overflow:hidden;
+  transition:border-color .35s,box-shadow .35s;
+  background:linear-gradient(168deg,rgba(242,235,228,0.95) 0%,var(--rose-poudre) 100%);
+  box-shadow:0 6px 24px var(--shadow-soft);
+}
+.faq-item.open{border-color:var(--olive-dore);box-shadow:0 12px 36px var(--shadow-deep);}
+.faq-btn{
+  width:100%;background:transparent;border:none;color:var(--noir-brun);
+  font-family:var(--font-serif);font-size:1.05rem;text-align:left;padding:22px 28px;
+  cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;
+  transition:background .35s;line-height:1.45;
+}
+.faq-item.open .faq-btn,.faq-btn:hover{background:rgba(115,94,74,0.1);}
+.faq-icon{color:var(--prune-noircie);font-size:1.1rem;flex-shrink:0;transition:transform .4s cubic-bezier(.4,0,.2,1);}
+.faq-item.open .faq-icon{transform:rotate(45deg);color:var(--olive-dore);}
+.faq-ans{
+  max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1),padding .5s;
+  font-family:var(--font-serif);font-size:1.02rem;line-height:1.9;color:var(--terre-sienne);
+  padding:0 28px;border-top:1px solid transparent;
+}
+.faq-item.open .faq-ans{max-height:560px;padding:18px 28px 26px;border-top-color:var(--nude-poussiere);}
+.faq-ans strong{color:var(--prune-noircie);font-weight:600;}
+
+/* ═══ MODAL RSVP ═══ */
+.overlay{display:none;position:fixed;inset:0;background:rgba(39,28,15,0.72);backdrop-filter:blur(10px);z-index:500;align-items:center;justify-content:center;padding:20px;}
+.overlay.open{display:flex;}
+.modal{
+  background:linear-gradient(168deg,#d4b5ac 0%,var(--rose-poudre) 50%,#bfa192 100%);
+  border:1px solid var(--nude-poussiere);outline:1px solid rgba(255,255,255,0.45);outline-offset:8px;
+  max-width:500px;width:100%;padding:48px 40px;position:relative;
+  animation:modalIn .5s cubic-bezier(.4,0,.2,1);max-height:90vh;overflow-y:auto;
+  box-shadow:0 32px 80px var(--shadow-deep);color:var(--noir-brun);
+}
+@keyframes modalIn{from{opacity:0;transform:translateY(28px) scale(0.96);}to{opacity:1;transform:translateY(0) scale(1);}}
+.modal-x{position:absolute;top:16px;right:20px;background:none;border:none;color:var(--noir-brun);opacity:0.45;font-size:1.3rem;cursor:pointer;transition:opacity .3s;}
+.modal-x:hover{opacity:1;}
+.modal-title{font-family:var(--font-script);font-size:2.6rem;color:var(--prune-noircie);text-align:center;margin-bottom:6px;line-height:1;}
+.modal-sub{font-family:var(--font-serif);font-style:italic;color:var(--terre-sienne);font-size:0.98rem;text-align:center;margin-bottom:28px;}
+.modal label,.rsvp-page-form label{
+  display:block;font-family:var(--font-hp-caps);font-size:0.54rem;letter-spacing:0.24em;text-transform:uppercase;
+  color:var(--olive-brunie);margin-bottom:8px;margin-top:18px;
+}
+.modal label:first-of-type,.rsvp-page-form label:first-of-type{margin-top:0;}
+.modal input,.modal select,.modal textarea,
+.rsvp-page-form input,.rsvp-page-form select,.rsvp-page-form textarea{
+  width:100%;background:rgba(255,255,255,0.55);border:1px solid var(--nude-poussiere);
+  color:var(--noir-brun);font-family:var(--font-serif);font-size:1rem;
+  padding:12px 14px;outline:none;transition:border-color .35s,box-shadow .35s;border-radius:0;-webkit-appearance:none;
+}
+.modal input::placeholder,.rsvp-page-form input::placeholder,.rsvp-page-form textarea::placeholder{color:var(--terre-sienne);opacity:0.65;}
+.modal input:focus,.modal select:focus,.modal textarea:focus,
+.rsvp-page-form input:focus,.rsvp-page-form select:focus,.rsvp-page-form textarea:focus{
+  border-color:var(--olive-dore);box-shadow:0 0 0 2px rgba(131,108,57,0.2);
+}
+.modal select option,.rsvp-page-form select option{background:var(--cream-light);color:var(--noir-brun);}
+
+/* ═══ RSVP PAGE ═══ */
+.rsvp-page-form{margin-top:0;text-align:left;}
+.rsvp-page-cta,.modal-cta{
+  width:100%;margin-top:28px;
+  background:linear-gradient(135deg,var(--prune-noircie) 0%,var(--olive-brunie) 100%);
+  border:1px solid var(--olive-brunie);color:var(--cream-light);
+  font-family:var(--font-serif);font-style:italic;font-size:1.06rem;letter-spacing:0.08em;
+  padding:16px;cursor:pointer;transition:all .35s;box-shadow:0 8px 24px var(--shadow-soft);
+}
+.rsvp-page-cta:hover,.modal-cta:hover{background:linear-gradient(135deg,var(--olive-antique),var(--vert-mousse));}
+.rsvp-page-done{display:none;text-align:center;padding:8px 0 0;font-family:var(--font-serif);font-style:italic;color:var(--terre-sienne);font-size:1.05rem;line-height:1.8;}
+.rsvp-page-done.show{display:block;}
+.song-box{
+  margin-top:20px;padding:20px 22px;
+  background:rgba(255,255,255,0.35);border:1px solid var(--nude-poussiere);
+}
+.song-title{font-family:var(--font-serif);font-style:italic;font-size:1.02rem;color:var(--prune-noircie);margin-bottom:12px;}
+.success-wrap{display:none;text-align:center;padding:20px 0;}
+.success-wrap.show{display:block;}
+.sicon{font-size:3rem;margin-bottom:14px;display:block;}
+.success-wrap h3{font-family:var(--font-script);font-size:2.3rem;color:var(--prune-noircie);margin-bottom:10px;line-height:1.1;}
+.success-wrap p{font-family:var(--font-serif);font-style:italic;color:var(--terre-sienne);font-size:1.02rem;line-height:1.75;}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .site-nav__btn{font-size:0.54rem;letter-spacing:0.14em;padding:8px 2px 11px;max-width:none;}
+  .site-nav__btn.active::after{width:calc(100% - 6px);}
+  .env-wrap{width:290px;height:190px;}
+  .env-body{width:290px;height:190px;}
+  .env-left{border-left-width:145px;border-top-width:95px;border-bottom-width:95px;}
+  .env-right{border-right-width:145px;border-top-width:95px;border-bottom-width:95px;}
+  .env-btm{border-bottom-width:95px;border-left-width:145px;border-right-width:145px;}
+  .env-flap{border-left-width:145px;border-right-width:145px;border-top-width:104px;}
+  .card-peek{left:20px;right:20px;}
+  .invitation-card{padding:50px 24px;}
+  .inv-names{font-size:clamp(3rem,14vw,4rem);}
+  .timeline::before{display:none;}
+  .tl-item{grid-template-columns:1fr;gap:10px;}
+  .tl-item:nth-child(odd) .tl-c,.tl-item:nth-child(even) .tl-c{grid-column:1;order:1;}
+  .tl-d,.tl-e{display:none;}
+  .pgrid{grid-template-columns:1fr 1fr;}
+  .pcell:first-child{grid-column:span 2;}
+  .modal{padding:36px 20px;}
+  .modal-title{font-size:2.35rem;}
+  .suite-card{padding:24px 18px;outline-offset:5px;}
+  .reg-card{padding:32px 20px 28px;}
+  .bot-side{display:none;}
+}
+</style>
+</head>
+<body class="hp-flatlight">
+
+<!-- Botanical side decorations -->
+<svg class="bot-side left" viewBox="0 0 140 740" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M70 740 Q52 600 70 460 Q88 320 62 185 Q44 90 70 0" stroke="#57492B" stroke-width="1.4" fill="none"/>
+  <ellipse cx="56" cy="170" rx="20" ry="32" fill="#613D42" transform="rotate(-22 56 170)"/>
+  <ellipse cx="78" cy="170" rx="5" ry="18" fill="#836C39" transform="rotate(-22 78 170)"/>
+  <ellipse cx="62" cy="310" rx="18" ry="28" fill="#47361E" transform="rotate(18 62 310)"/>
+  <ellipse cx="82" cy="310" rx="4" ry="15" fill="#37420F" transform="rotate(18 82 310)"/>
+  <ellipse cx="55" cy="450" rx="19" ry="30" fill="#613D42" transform="rotate(-18 55 450)"/>
+  <ellipse cx="74" cy="450" rx="5" ry="16" fill="#836C39" transform="rotate(-18 74 450)"/>
+  <path d="M68 175 Q65 210 68 248 Q64 285 67 322" stroke="#463C23" stroke-width="1.2" fill="none"/>
+  <path d="M73 175 Q76 214 72 252 Q75 290 71 328" stroke="#463C23" stroke-width="1" fill="none"/>
+  <path d="M64 320 Q61 358 65 396 Q60 432 64 470" stroke="#463C23" stroke-width="1.2" fill="none"/>
+  <path d="M70 320 Q73 360 69 400 Q73 438 68 476" stroke="#463C23" stroke-width="1" fill="none"/>
+  <path d="M70 248 Q44 228 42 200 Q58 215 70 248Z" fill="#37420F" opacity="0.7"/>
+  <path d="M70 388 Q42 366 40 338 Q57 352 70 388Z" fill="#37420F" opacity="0.65"/>
+  <path d="M68 510 Q40 488 38 460 Q56 475 68 510Z" fill="#836C39" opacity="0.55"/>
+</svg>
+
+<svg class="bot-side right" viewBox="0 0 140 740" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M70 740 Q52 600 70 460 Q88 320 62 185 Q44 90 70 0" stroke="#57492B" stroke-width="1.4" fill="none"/>
+  <ellipse cx="56" cy="170" rx="20" ry="32" fill="#613D42" transform="rotate(-22 56 170)"/>
+  <ellipse cx="78" cy="170" rx="5" ry="18" fill="#836C39" transform="rotate(-22 78 170)"/>
+  <ellipse cx="62" cy="310" rx="18" ry="28" fill="#47361E" transform="rotate(18 62 310)"/>
+  <ellipse cx="82" cy="310" rx="4" ry="15" fill="#37420F" transform="rotate(18 82 310)"/>
+  <ellipse cx="55" cy="450" rx="19" ry="30" fill="#613D42" transform="rotate(-18 55 450)"/>
+  <ellipse cx="74" cy="450" rx="5" ry="16" fill="#836C39" transform="rotate(-18 74 450)"/>
+  <path d="M68 175 Q65 210 68 248 Q64 285 67 322" stroke="#463C23" stroke-width="1.2" fill="none"/>
+  <path d="M73 175 Q76 214 72 252 Q75 290 71 328" stroke="#463C23" stroke-width="1" fill="none"/>
+  <path d="M64 320 Q61 358 65 396 Q60 432 64 470" stroke="#463C23" stroke-width="1.2" fill="none"/>
+  <path d="M70 320 Q73 360 69 400 Q73 438 68 476" stroke="#463C23" stroke-width="1" fill="none"/>
+  <path d="M70 248 Q44 228 42 200 Q58 215 70 248Z" fill="#37420F" opacity="0.7"/>
+  <path d="M70 388 Q42 366 40 338 Q57 352 70 388Z" fill="#37420F" opacity="0.65"/>
+  <path d="M68 510 Q40 488 38 460 Q56 475 68 510Z" fill="#836C39" opacity="0.55"/>
+</svg>
+
+<!-- NAV — olive bar (HOMEPAGE · RSVP · REGISTRY · Q&A uniquement) -->
+<nav class="site-nav" aria-label="Navigation">
+  <div class="site-nav__bar">
+    <div class="site-nav__skin">
+      <div class="site-nav__links">
+        <button type="button" class="site-nav__btn active" data-page="invite" onclick="goTo('invite',this)">HOMEPAGE</button>
+        <button type="button" id="nav-rsvp" class="site-nav__btn" data-page="rsvp" onclick="goTo('rsvp',this)">RSVP</button>
+        <button type="button" class="site-nav__btn" data-page="registry" onclick="goTo('registry',this)">REGISTRY</button>
+        <button type="button" class="site-nav__btn" data-page="qa" onclick="goTo('qa',this)">Q&amp;A</button>
+      </div>
+    </div>
+    <div class="site-nav__foot" aria-hidden="true">
+      <div class="site-nav__foot-line"></div>
+      <div class="site-nav__foot-mark">
+        <svg class="site-nav__ornament" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 32" preserveAspectRatio="none" width="1200" height="32" role="presentation">
+          <defs>
+            <linearGradient id="navorn-g" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f2ebe4"/>
+              <stop offset="45%" stop-color="#c5a89f"/>
+              <stop offset="100%" stop-color="#8c755f"/>
+            </linearGradient>
+            <path id="navorn-arm" d="M0,-11 C3.5,-10 4.6,-6.4 3,-4.1 L1.1,-2.7 L1.1,0.65 L-1.1,0.65 L-1.1,-2.7 L-3,-4.1 C-4.6,-6.4 -3.5,-10 0,-11Z"/>
+          </defs>
+          <g transform="translate(600,13.5)" fill="url(#navorn-g)">
+            <use href="#navorn-arm"/>
+            <use href="#navorn-arm" transform="rotate(90)"/>
+            <use href="#navorn-arm" transform="rotate(180)"/>
+            <use href="#navorn-arm" transform="rotate(270)"/>
+            <circle cx="0" cy="0" r="2.85"/>
+            <circle cx="0" cy="0" r="1.05" fill="#271c0f" opacity="0.45"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ PAGE 1: HOMEPAGE — image plein écran ═══ -->
+<div id="page-invite" class="page active hp-home">
+  <section class="hp-stage" aria-label="Accueil">
+    <div class="hp-stage__inner">
+      <picture class="hp-stage__picture">
+        <source media="(min-width: 768px)" srcset="assets/homepage_computer.png" type="image/png">
+        <img
+          class="hp-stage__photo"
+          src="assets/homepage_phone.png"
+          width="1536"
+          height="2752"
+          alt="Kami & Gabriel — visuel d’accueil."
+          decoding="async"
+          fetchpriority="high"
+        >
+      </picture>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ PAGE: RSVP ═══ -->
+<div id="page-rsvp" class="page">
+  <div class="pwrap" style="max-width:620px;">
+    <div class="phero">
+      <span class="eyebrow">Kindly Reply</span>
+      <h2 class="ptitle">RSVP</h2>
+      <div class="grule"></div>
+      <p class="psub">We hope you can celebrate with us — please share your response below.</p>
+    </div>
+    <div id="rsvpPageFormWrap" class="suite-card">
+      <form class="rsvp-page-form" id="rsvpPageForm" onsubmit="return submitRSVPPage(event)">
+        <label for="rp-name">Your Name(s)</label>
+        <input type="text" id="rp-name" name="name" autocomplete="name" placeholder="Full name(s)" required>
+        <label for="rp-email">Email Address</label>
+        <input type="email" id="rp-email" name="email" autocomplete="email" placeholder="your@email.com">
+        <label for="rp-attend">Will you be attending?</label>
+        <select id="rp-attend" name="attend" required>
+          <option value="">— Please select —</option>
+          <option value="yes">Joyfully accepts</option>
+          <option value="no">Regretfully declines</option>
+        </select>
+        <label for="rp-guests">Number of Guests</label>
+        <select id="rp-guests" name="guests">
+          <option value="1">1 guest</option>
+          <option value="2">2 guests</option>
+          <option value="3">3 guests</option>
+          <option value="4">4 guests</option>
+        </select>
+        <label for="rp-diet">Dietary Restrictions (optional)</label>
+        <input type="text" id="rp-diet" name="diet" placeholder="Vegetarian, allergies, etc.">
+        <div class="song-box">
+          <div class="song-title">🎵 What's your favorite song?</div>
+          <input type="text" id="rp-song" name="song" placeholder="Artist – Song Title (we might play it!)">
+        </div>
+        <label for="rp-note">A note for the couple (optional)</label>
+        <textarea id="rp-note" name="note" rows="3" placeholder="Share a message or well wishes..."></textarea>
+        <button type="submit" class="rsvp-page-cta">Send My RSVP ✦</button>
+      </form>
+    </div>
+    <div class="rsvp-page-done suite-card" id="rsvpPageDone">
+      <span class="sicon">💌</span>
+      <h3 class="suite-success__title">We received your RSVP!</h3>
+      <p id="rsvpPageDoneMsg">Thank you so much — we can't wait to celebrate with you!</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PAGE 2: OUR STORY ═══ -->
+<div id="page-story" class="page">
+  <div class="pwrap">
+    <div class="phero">
+      <span class="eyebrow">The Beginning of Forever</span>
+      <h2 class="ptitle">Our Story</h2>
+      <div class="grule"></div>
+      <p class="psub">Every love story is beautiful — ours is our favorite.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-c"><div class="tl-year">How We Met</div><div class="tl-title">The First Hello</div><div class="tl-txt">Every great love story starts with a moment — a glance, a word, a laugh that felt entirely different. For Kami and Gabriel, that moment was the beginning of everything. Add your story here to share with guests how you two found each other.</div></div>
+        <div class="tl-d"><div class="tl-dot"></div></div>
+        <div class="tl-e"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-e"></div>
+        <div class="tl-d"><div class="tl-dot"></div></div>
+        <div class="tl-c"><div class="tl-year">The Early Days</div><div class="tl-title">Falling in Love</div><div class="tl-txt">From the first date to the moments that made it clear this was something extraordinary. Share your favorite early memories — the late-night conversations, the adventures, the quiet in-between moments that said everything without words.</div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-c"><div class="tl-year">The Proposal</div><div class="tl-title">She Said Yes</div><div class="tl-txt">The moment Gabriel got down on one knee and Kami said yes. Tell your guests about the proposal — where it happened, what was said, how it felt. The story everyone will want to hear over and over again.</div></div>
+        <div class="tl-d"><div class="tl-dot"></div></div>
+        <div class="tl-e"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-e"></div>
+        <div class="tl-d"><div class="tl-dot"></div></div>
+        <div class="tl-c"><div class="tl-year">June 6, 2026</div><div class="tl-title">The Big Day</div><div class="tl-txt">Surrounded by everyone they love, in the heart of the French Quarter at The Baroness, Kami and Gabriel are ready to say "I do" and begin the greatest chapter yet.</div></div>
+      </div>
+    </div>
+
+    <div class="photo-sec">
+      <div class="phero" style="margin-bottom:0;">
+        <span class="eyebrow">Our Moments</span>
+        <h2 class="ptitle ptitle--sub">Photo Gallery</h2>
+        <div class="grule"></div>
+      </div>
+      <div class="pgrid">
+        <div class="pcell"><div class="pinner"><span class="picon">🌹</span><span class="pcap">Add your favorite photo here</span></div></div>
+        <div class="pcell"><div class="pinner"><span class="picon">✨</span><span class="pcap">Engagement photo</span></div></div>
+        <div class="pcell"><div class="pinner"><span class="picon">🌿</span><span class="pcap">A moment together</span></div></div>
+        <div class="pcell"><div class="pinner"><span class="picon">💫</span><span class="pcap">An adventure together</span></div></div>
+        <div class="pcell"><div class="pinner"><span class="picon">🕯️</span><span class="pcap">The proposal</span></div></div>
+      </div>
+      <p class="photo-hint">Add your photos to bring this gallery to life</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PAGE 3: REGISTRY ═══ -->
+<div id="page-registry" class="page">
+  <div class="pwrap" style="max-width:880px;">
+    <div class="phero">
+      <span class="eyebrow">Gifts &amp; Wishes</span>
+      <h2 class="ptitle">Registry</h2>
+      <div class="grule"></div>
+      <p class="psub">Your presence is our greatest gift. But if you'd like to celebrate further...</p>
+    </div>
+    <div class="reg-grid">
+      <a href="#" class="reg-card" onclick="return false;"><span class="reg-icon">🏠</span><div class="reg-name">Zola</div><div class="reg-desc">Curated picks for our home sweet home — every item chosen with love</div><span class="reg-cta">View Registry →</span></a>
+      <a href="#" class="reg-card" onclick="return false;"><span class="reg-icon">🎁</span><div class="reg-name">Amazon</div><div class="reg-desc">From kitchen essentials to everyday treasures for our new beginning</div><span class="reg-cta">View Registry →</span></a>
+      <a href="#" class="reg-card" onclick="return false;"><span class="reg-icon">✈️</span><div class="reg-name">Honeymoon Fund</div><div class="reg-desc">Help us celebrate with an unforgettable adventure as newlyweds</div><span class="reg-cta">Contribute →</span></a>
+    </div>
+    <div class="reg-note">"We are so deeply grateful for your love and support as we begin this new chapter. Your presence at our wedding means the world to us. If you choose to honor us with a gift, we are truly and sincerely touched."<br><br>— Kami &amp; Gabriel</div>
+  </div>
+</div>
+
+<!-- ═══ PAGE 4: Q&A ═══ -->
+<div id="page-qa" class="page">
+  <div class="pwrap" style="max-width:780px;">
+    <div class="phero">
+      <span class="eyebrow">Everything You Need to Know</span>
+      <h2 class="ptitle">Questions &amp; Answers</h2>
+      <div class="grule"></div>
+      <p class="psub">We've answered the most common questions below — reach out if you need more!</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFAQ(this)">When and where is the ceremony?<span class="faq-icon">+</span></button><div class="faq-ans">The ceremony takes place on <strong>Saturday, June 6, 2026</strong> at <strong>7:00 PM</strong> at <strong>The Baroness</strong>, located at <strong>512 Conti Street, New Orleans, Louisiana</strong> in the French Quarter. Please arrive 15–20 minutes early to be seated comfortably before the ceremony begins.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFAQ(this)">What is the dress code?<span class="faq-icon">+</span></button><div class="faq-ans">The dress code is <strong>Black Tie Optional</strong>. Think floor-length gowns, velvet or silk cocktail dresses, tuxedos, or dark tailored suits. Our palette draws on deep brown-black, antique olive, dusty rose, and muted plum — wearing those tones is welcome but never required.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFAQ(this)">Is there parking nearby?<span class="faq-icon">+</span></button><div class="faq-ans">The French Quarter has several paid parking garages nearby along Decatur Street and at the Royal Sonesta. Street parking is limited on weekends. We highly recommend rideshares (Uber/Lyft) so you can fully enjoy the evening without worrying about parking!</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFAQ(this)">Will the reception be at the same venue?<span class="faq-icon">+</span></button><div class="faq-ans">Yes! Both the ceremony and reception will be held at <strong>The Baroness</strong>. After the ceremony, we'll celebrate with dinner, cocktails, dancing, and joy — all in the same beautiful space.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFAQ(this)">Can I bring a plus one?<span class="faq-icon">+</span></button><div class="faq-ans">Plus ones are indicated on your invitation. If yours reads "and guest," please bring someone special! If you're unsure, reach out to us directly and we'll be happy to clarify.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFAQ(this)">Are children welcome?<span class="faq-icon">+</span></button><div class="faq-ans">We love your little ones! Children are welcome — please note them on your RSVP so we can arrange proper seating. If you prefer a night out without the kids, we completely understand too!</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFAQ(this)">What is the RSVP deadline?<span class="faq-icon">+</span></button><div class="faq-ans">Please RSVP by <strong>May 1, 2026</strong>. You can RSVP right here on this website using the "RSVP Now" button on the Invitation tab. We need your response to finalize seating, catering, and all the beautiful details!</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFAQ(this)">Will there be food and drinks?<span class="faq-icon">+</span></button><div class="faq-ans">Absolutely! We'll have a full dinner service with cocktails, wine, and champagne for the toast. If you have dietary restrictions or allergies, please note them on your RSVP so our caterer can accommodate you.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFAQ(this)">Where should I stay in New Orleans?<span class="faq-icon">+</span></button><div class="faq-ans">New Orleans has incredible accommodations! Being in the French Quarter, you'll be surrounded by charming boutique hotels, historic B&Bs, and major brands — many within walking distance of The Baroness. Check back soon for a hotel block code, or feel free to book your own adventure in one of the world's most magical cities.</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFAQ(this)">Can I take photos during the ceremony?<span class="faq-icon">+</span></button><div class="faq-ans">We are hosting an <strong>unplugged ceremony</strong> — please put phones and cameras away while we exchange our vows. We want everyone fully present for this sacred moment, and our photographer will capture every detail. After the ceremony, share everything! Tag us: <strong>#KamiAndGabriel2026</strong> 🌹</div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFAQ(this)">Still have questions?<span class="faq-icon">+</span></button><div class="faq-ans">We're happy to help with anything at all! Reach out to us directly and we'll get back to you as soon as possible. We are so grateful you're celebrating with us — we cannot wait to see you on June 6th! 🌹</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ RSVP MODAL ═══ -->
+<div class="overlay" id="rsvpOverlay">
+  <div class="modal">
+    <button class="modal-x" onclick="closeRSVP()">✕</button>
+    <div id="formWrap">
+      <h2 class="modal-title">RSVP</h2>
+      <p class="modal-sub">Kami &amp; Gabriel · June 6, 2026</p>
+      <label>Your Name(s)</label>
+      <input type="text" id="f-name" placeholder="Full name(s)">
+      <label>Email Address</label>
+      <input type="email" id="f-email" placeholder="your@email.com">
+      <label>Will you be attending?</label>
+      <select id="f-attend">
+        <option value="">— Please select —</option>
+        <option value="yes">Joyfully accepts</option>
+        <option value="no">Regretfully declines</option>
+      </select>
+      <label>Number of Guests</label>
+      <select id="f-guests">
+        <option value="1">1 guest</option>
+        <option value="2">2 guests</option>
+        <option value="3">3 guests</option>
+        <option value="4">4 guests</option>
+      </select>
+      <label>Dietary Restrictions (optional)</label>
+      <input type="text" id="f-diet" placeholder="Vegetarian, allergies, etc.">
+      <div class="song-box">
+        <div class="song-title">🎵 What's your favorite song?</div>
+        <input type="text" id="f-song" placeholder="Artist – Song Title (we might play it!)">
+      </div>
+      <label>A note for the couple (optional)</label>
+      <textarea id="f-note" rows="3" placeholder="Share a message or well wishes..."></textarea>
+      <button class="modal-cta" onclick="submitRSVP()">Send My RSVP ✦</button>
+    </div>
+    <div class="success-wrap" id="successWrap">
+      <span class="sicon">💌</span>
+      <h3>We received your RSVP!</h3>
+      <p id="successMsg">Thank you so much — we can't wait to celebrate with you!</p>
+      <br>
+      <button class="close-btn" onclick="closeRSVP()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function goTo(id,btn){
+  if (id !== "rsvp") {
+    const rsvpDone = document.getElementById("rsvpPageDone");
+    const rsvpWrap = document.getElementById("rsvpPageFormWrap");
+    const rsvpForm = document.getElementById("rsvpPageForm");
+    if (rsvpDone && rsvpDone.classList.contains("show")) {
+      if (rsvpWrap) rsvpWrap.style.display = "";
+      rsvpDone.classList.remove("show");
+      if (rsvpForm) rsvpForm.reset();
+    }
+  }
+  if (id === "invite") {
+    document.body.classList.add("hp-flatlight");
+  } else {
+    document.body.classList.remove("hp-flatlight");
+  }
+  if (id !== "invite") {
+    const inv = document.getElementById("invCard");
+    const sc = document.getElementById("envScene");
+    const hint = document.querySelector(".invite-hint");
+    if (inv && sc) {
+      inv.style.display = "none";
+      sc.classList.remove("is-open");
+      sc.style.display = "block";
+      sc.onclick = openEnv;
+      if (hint) hint.style.display = "block";
+      envOpen = false;
+    }
+  }
+  document.querySelectorAll(".page").forEach((p) => p.classList.remove("active"));
+  document.querySelectorAll(".site-nav__btn").forEach((b) => b.classList.remove("active"));
+  const pageEl = document.getElementById("page-" + id);
+  if (pageEl) pageEl.classList.add("active");
+  const navBtn = btn || document.querySelector('.site-nav__btn[data-page="' + id + '"]');
+  if (navBtn) navBtn.classList.add("active");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+let envOpen=false;
+function openEnv(){
+  if(envOpen)return;
+  const sc=document.getElementById('envScene');
+  if(!sc)return;
+  envOpen=true;
+  sc.classList.add('is-open');
+  sc.onclick=null;
+  const hint=document.querySelector('.invite-hint');
+  const inv=document.getElementById('invCard');
+  setTimeout(()=>{
+    sc.style.display='none';
+    if(hint)hint.style.display='none';
+    if(inv)inv.style.display='block';
+  },960);
+}
+function closeEnv(){
+  const inv=document.getElementById('invCard');
+  const sc=document.getElementById('envScene');
+  const hint=document.querySelector('.invite-hint');
+  if(!sc)return;
+  if(inv)inv.style.display='none';
+  sc.classList.remove('is-open');
+  sc.style.display='block';
+  sc.onclick=openEnv;
+  if(hint)hint.style.display='block';
+  envOpen=false;
+}
+
+function tick(){
+  const elD=document.getElementById('cd-d');
+  if(!elD)return;
+  const diff=new Date('2026-06-06T19:00:00')-new Date();
+  const t=diff>0?diff:0;
+  elD.textContent=String(Math.floor(t/86400000)).padStart(2,'0');
+  const elH=document.getElementById('cd-h');
+  const elM=document.getElementById('cd-m');
+  const elS=document.getElementById('cd-s');
+  if(elH)elH.textContent=String(Math.floor(t%86400000/3600000)).padStart(2,'0');
+  if(elM)elM.textContent=String(Math.floor(t%3600000/60000)).padStart(2,'0');
+  if(elS)elS.textContent=String(Math.floor(t%60000/1000)).padStart(2,'0');
+}
+if(document.getElementById('cd-d')){tick();setInterval(tick,1000);}
+
+function toggleFAQ(btn){
+  const item=btn.closest('.faq-item');
+  const was=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!was)item.classList.add('open');
+}
+
+function openRSVP(){
+  document.getElementById('rsvpOverlay').classList.add('open');
+  document.getElementById('formWrap').style.display='block';
+  document.getElementById('successWrap').classList.remove('show');
+}
+function closeRSVP(){document.getElementById('rsvpOverlay').classList.remove('open');}
+document.getElementById('rsvpOverlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeRSVP();});
+
+function submitRSVP(){
+  const name=document.getElementById('f-name').value.trim();
+  const attend=document.getElementById('f-attend').value;
+  const song=document.getElementById('f-song').value.trim();
+  if(!name){alert('Please enter your name.');return;}
+  if(!attend){alert('Please let us know if you can attend!');return;}
+  document.getElementById('formWrap').style.display='none';
+  const sw=document.getElementById('successWrap');
+  sw.classList.add('show');
+  document.getElementById('successMsg').textContent=attend==='yes'
+    ?`Thank you, ${name}! We are absolutely thrilled you'll be celebrating with us on June 6th.${song?' And we love your song choice — we\'ll see what we can do! 🎵':''}`
+    :`Thank you, ${name}. We'll miss you so much, but we're truly grateful for your love and well wishes.`;
+}
+
+function submitRSVPPage(ev){
+  ev.preventDefault();
+  const name=document.getElementById('rp-name').value.trim();
+  const attend=document.getElementById('rp-attend').value;
+  const song=document.getElementById('rp-song').value.trim();
+  if(!name){alert('Please enter your name.');return false;}
+  if(!attend){alert('Please let us know if you can attend!');return false;}
+  document.getElementById('rsvpPageFormWrap').style.display='none';
+  const done=document.getElementById('rsvpPageDone');
+  done.classList.add('show');
+  document.getElementById('rsvpPageDoneMsg').textContent=attend==='yes'
+    ?`Thank you, ${name}! We are absolutely thrilled you'll be celebrating with us on June 6th.${song?' And we love your song choice — we\'ll see what we can do! 🎵':''}`
+    :`Thank you, ${name}. We'll miss you so much, but we're truly grateful for your love and well wishes.`;
+  return false;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "fireflyofsoulstudio-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare-assets": "rm -rf public && mkdir -p public/assets && cp -R assets/. public/assets/",
+    "predev": "npm run prepare-assets",
+    "prebuild": "npm run prepare-assets",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy:worker": "npm run build && wrangler deploy",
+    "deploy:pages": "npm run build && wrangler pages deploy dist --project-name=fireflyofsoulstudio --branch=production --commit-dirty=true"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5",
+    "wrangler": "^4.90.0"
+  }
+}
