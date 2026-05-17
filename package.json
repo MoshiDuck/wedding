@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "prepare-assets": "rm -rf public && mkdir -p public/assets && cp -R assets/. public/assets/",
+    "prepare-assets": "mkdir -p public/assets public/css && node scripts/optimize-images.mjs && cp css/site-nav.css public/css/",
+    "prepare-assets:clean": "rm -rf public/assets public/assets-manifest.json && FORCE_OPTIMIZE=1 npm run prepare-assets",
     "predev": "npm run prepare-assets",
     "prebuild": "npm run prepare-assets",
     "dev": "vite",
@@ -13,6 +14,7 @@
     "deploy:pages": "npm run build && wrangler pages deploy dist --project-name=fireflyofsoulstudio --branch=production --commit-dirty=true"
   },
   "devDependencies": {
+    "sharp": "^0.34.2",
     "vite": "^6.3.5",
     "wrangler": "^4.90.0"
   }

@@ -1,0 +1,203 @@
+/* Barre de navigation partagée — partials/site-nav.html */
+:root {
+  --nav-olive: #4a3d24;
+  --nav-olive-deep: #2e2410;
+  --nav-cream: #f2ebe4;
+  --nav-gold: #c4a97e;
+  --site-nav-h: 88px;
+}
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  overflow: visible;
+}
+
+.site-nav__bar {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.site-nav__skin {
+  background: linear-gradient(180deg, #4f4229 0%, #382d17 55%, #2e2410 100%);
+  position: relative;
+}
+
+.site-nav__skin::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+}
+
+.site-nav__skin::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(196, 169, 126, 0.55) 30%,
+    rgba(196, 169, 126, 0.8) 50%,
+    rgba(196, 169, 126, 0.55) 70%,
+    transparent
+  );
+}
+
+.site-nav__links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  padding: 16px 32px 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.site-nav__foot {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  min-height: 18px;
+  height: 18px;
+  background: transparent;
+  overflow: visible;
+}
+
+/* Ligne crème pleine largeur sous la barre */
+.site-nav__foot::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(196, 169, 126, 0.5) 20%,
+    rgba(242, 235, 228, 0.95) 50%,
+    rgba(196, 169, 126, 0.5) 80%,
+    transparent
+  );
+}
+
+/* Ornement central (logo) — chevauche la ligne */
+.site-nav__foot-mark {
+  position: absolute;
+  left: 50%;
+  right: auto;
+  top: 0;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  z-index: 3;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+}
+
+.site-nav__ornament {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+a.site-nav__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-nav__btn {
+  flex: 0 0 auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Cinzel", serif;
+  font-size: 0.56rem;
+  font-weight: 400;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(242, 235, 228, 0.7);
+  padding: 8px 6px 11px;
+  position: relative;
+  transition: color 0.35s;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.site-nav__btn::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  transform: translateX(-50%) scaleX(0);
+  width: calc(100% - 22px);
+  height: 0.5px;
+  background: var(--nav-gold);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: center;
+}
+
+.site-nav__btn:hover {
+  color: var(--nav-cream);
+}
+
+.site-nav__btn:hover::before {
+  transform: translateX(-50%) scaleX(0.6);
+}
+
+.site-nav__btn:focus-visible {
+  outline: 1px solid var(--nav-gold);
+  outline-offset: 3px;
+}
+
+.site-nav__btn.active {
+  color: var(--nav-cream);
+}
+
+.site-nav__btn.active::before {
+  transform: translateX(-50%) scaleX(1) !important;
+  opacity: 0.9;
+}
+
+.site-nav__btn.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%) rotate(45deg);
+  width: 4px;
+  height: 4px;
+  background: var(--nav-gold);
+  opacity: 0.8;
+}
+
+@media (max-width: 640px) {
+  .site-nav__btn {
+    font-size: 0.46rem;
+    letter-spacing: 0.2em;
+    padding: 8px 9px 11px;
+  }
+
+  :root {
+    --site-nav-h: 84px;
+  }
+}

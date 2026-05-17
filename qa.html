@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0e0b08">
+<title>Q&A — Kami & Gabriel</title>
+<link rel="preload" as="image" href="assets/background_phone.png" type="image/png" media="(max-width: 767px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/background_computer.png" type="image/png" media="(min-width: 768px)" fetchpriority="high">
+<link rel="stylesheet" href="/css/site-nav.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Castoro+Titling&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:transparent;
+  min-height:100vh;
+  font-family:'Cormorant Garamond',serif;
+  overflow-x:hidden;
+  position:relative;
+}
+.page-bg{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  width:100vw;
+  max-width:100vw;
+  height:100vh;
+  height:100dvh;
+  overflow:hidden;
+}
+.page-bg picture{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+}
+.page-bg img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  vertical-align:top;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+#petals-wrap{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden;}
+:root{
+}
+
+.page{
+  position:relative;z-index:3;
+  display:flex;flex-direction:column;align-items:center;
+  padding:calc(var(--site-nav-h) + 28px) 20px 80px;
+  min-height:100vh;
+}
+.main-card{
+  background:linear-gradient(170deg,#f0e2da 0%,#e8d5cb 45%,#e0cac0 100%);
+  max-width:620px;width:100%;position:relative;
+  padding:44px 36px 48px;
+  box-shadow:0 0 0 1px rgba(100,45,40,0.1),0 40px 100px rgba(4,1,0,0.88),0 16px 40px rgba(60,15,25,0.5);
+  opacity:0;animation:riseUp 1.6s cubic-bezier(.22,1,.36,1) .3s forwards;
+}
+.main-card::before{content:'';position:absolute;inset:9px;border:.5px solid rgba(90,35,35,0.2);pointer-events:none;}
+.card-header{text-align:center;padding-bottom:28px;border-bottom:.5px solid rgba(90,35,35,0.15);margin-bottom:28px;}
+.qa-title{font-family:'Castoro Titling',serif;font-size:48px;color:#2e1218;letter-spacing:.14em;line-height:1;margin-bottom:10px;}
+.title-ornament{display:flex;align-items:center;justify-content:center;gap:0;margin:0 auto 12px;width:fit-content;}
+.title-line{width:56px;height:.5px;background:rgba(90,35,35,0.35);flex-shrink:0;}
+.diam{display:block;width:6px;height:6px;background:#7a3535;transform:rotate(45deg);opacity:.45;flex-shrink:0;margin:0;}
+.card-sub{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.5em;color:rgba(60,20,20,0.5);text-transform:uppercase;}
+.faq-list{display:flex;flex-direction:column;gap:8px;}
+.faq-item{
+  border:.5px solid rgba(90,35,35,0.18);
+  overflow:hidden;
+  transition:border-color .35s, box-shadow .35s;
+  background:rgba(255,248,244,0.35);
+}
+.faq-item.open{
+  border-color:rgba(90,35,35,0.45);
+  box-shadow:0 6px 24px rgba(60,15,25,0.18);
+  background:rgba(255,248,244,0.55);
+}
+.faq-btn{
+  width:100%;background:transparent;border:none;
+  color:#2e1010;
+  font-family:'Cormorant Garamond',serif;font-size:1.02rem;
+  text-align:left;padding:16px 20px;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  transition:background .3s;line-height:1.45;
+}
+.faq-btn:hover{background:rgba(255,248,244,0.6);}
+.faq-item.open .faq-btn{background:rgba(255,248,244,0.6);}
+.faq-icon{
+  font-family:'Cinzel',serif;
+  color:rgba(90,35,35,0.55);font-size:1rem;flex-shrink:0;
+  transition:transform .4s cubic-bezier(.4,0,.2,1), color .3s;
+  line-height:1;
+}
+.faq-item.open .faq-icon{transform:rotate(45deg);color:#7a3535;}
+.faq-ans{
+  max-height:0;overflow:hidden;
+  transition:max-height .5s cubic-bezier(.4,0,.2,1), padding .4s;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:0.98rem;line-height:1.85;
+  color:rgba(60,25,20,0.72);
+  padding:0 20px;
+  border-top:.5px solid transparent;
+}
+.faq-item.open .faq-ans{
+  max-height:400px;
+  padding:14px 20px 20px;
+  border-top-color:rgba(90,35,35,0.12);
+}
+.faq-ans strong{color:#2e1218;font-style:normal;font-weight:500;}
+.card-flora{margin-top:30px;display:flex;justify-content:center;opacity:.35;}
+.card-note{
+  margin-top:28px;padding-top:22px;
+  border-top:.5px solid rgba(90,35,35,0.15);
+  text-align:center;
+  font-family:'Cinzel',serif;font-size:8px;letter-spacing:.4em;
+  color:rgba(60,20,20,0.45);text-transform:uppercase;
+}
+@keyframes riseUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes petalFall{0%{transform:translateY(-10px) rotate(0deg) translateX(0);opacity:0;}8%{opacity:.6;}92%{opacity:.3;}100%{transform:translateY(102vh) rotate(340deg) translateX(35px);opacity:0;}}
+@media(max-width:640px){
+  .main-card{padding:36px 24px 40px;}
+  .qa-title{font-size:38px;}
+}
+</style>
+</head>
+<body>
+
+
+<!-- SITE_NAV -->
+
+<div class="page-bg" aria-hidden="true">
+  <picture>
+    <source media="(min-width: 768px)" srcset="assets/background_computer.png" type="image/png">
+    <img src="assets/background_phone.png" alt="" decoding="async" fetchpriority="high">
+  </picture>
+</div>
+
+<div id="petals-wrap"></div>
+
+<div class="page">
+  <div class="main-card">
+    <div class="card-header">
+      <div class="qa-title">Q &amp; A</div>
+      <div class="title-ornament" aria-hidden="true">
+        <span class="title-line"></span>
+        <span class="diam"></span>
+        <span class="title-line"></span>
+      </div>
+      <span class="card-sub">Everything you need to know</span>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFAQ(this)">When and where is the ceremony?<span class="faq-icon">+</span></button>
+        <div class="faq-ans">The ceremony takes place on <strong>Saturday, June 6, 2026 at 7:00 PM</strong> at <strong>The Baroness</strong>, 512 Conti Street, French Quarter, New Orleans, LA 70130. Please arrive 15 to 20 minutes early to be seated before the ceremony starts. Doors open at <strong>6:30 PM</strong>.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFAQ(this)">What is the dress code?<span class="faq-icon">+</span></button>
+        <div class="faq-ans"><strong>Floral Dress / Black Tie Optional.</strong> Think romantic garden soirée at dusk — floor-length floral gowns, velvet or silk cocktail dresses, tuxedos, or dark tailored suits. Our palette draws on antique olive, dusty rose, and muted plum — wearing those tones is welcome but never required.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFAQ(this)">Will the reception be at the same venue?<span class="faq-icon">+</span></button>
+        <div class="faq-ans">Yes! Both the ceremony and reception will be held at <strong>The Baroness</strong>. After the ceremony, we'll celebrate with cocktails, a seated dinner, and dancing — all in the same beautiful space.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFAQ(this)">Is there parking nearby?<span class="faq-icon">+</span></button>
+        <div class="faq-ans">While we recommend being dropped off in front of the venue, New Orleans is home to many paid parking lots on each street! The closest parking area is located on <strong>300 N Peters St, New Orleans, LA 70130</strong>.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFAQ(this)">Can I bring a plus one?<span class="faq-icon">+</span></button>
+        <div class="faq-ans">Due to the intimacy of our celebration, we are only able to accommodate those <strong>formally named on the invitation</strong>. If your invitation reads "and guest," please bring someone special! Unsure? Reach out and we'll clarify.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFAQ(this)">Are children welcome?<span class="faq-icon">+</span></button>
+        <div class="faq-ans">We kindly request an adult only celebration, with the exception of children in the wedding party and immediate family.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFAQ(this)">What is the RSVP deadline?<span class="faq-icon">+</span></button>
+        <div class="faq-ans">Please RSVP by <strong>June 1st</strong>. Use the link in the navigation above.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFAQ(this)">Will there be food and drinks?<span class="faq-icon">+</span></button>
+        <div class="faq-ans">Absolutely! We'll have a full dinner service with cocktails, wine, and champagne for the toast.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFAQ(this)">What will the weather be like?<span class="faq-icon">+</span></button>
+        <div class="faq-ans">Early June in New Orleans is warm and beautiful — expect highs in the mid-to-upper 80s°F. We recommend <strong>light layers</strong> for the evening. New Orleans in June is magical; enjoy every moment of it!</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFAQ(this)">Can I take photos during the ceremony?<span class="faq-icon">+</span></button>
+        <div class="faq-ans">We are hosting an <strong>unplugged ceremony</strong> — please put phones and cameras away while we exchange our vows. Our photographer will capture every detail. After the ceremony, share everything!</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFAQ(this)">Still have questions?<span class="faq-icon">+</span></button>
+        <div class="faq-ans">We're happy to help! Reach out to <strong>Kami or Gabriel</strong> directly and we'll get back to you as soon as possible. We cannot wait to celebrate with you on June 6th! 🌹</div>
+      </div>
+    </div>
+
+    <div class="card-note">More questions — please reach out to Kami or Gabriel</div>
+
+    <div class="card-flora">
+      <svg width="160" height="60" viewBox="0 0 160 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#5a2828" stroke-width=".8" opacity=".7">
+          <line x1="80" y1="55" x2="80" y2="20"/>
+          <path d="M80,38 C65,32 52,28 44,22" fill="none"/>
+          <path d="M80,30 C68,25 58,18 52,12" fill="none"/>
+          <path d="M80,38 C95,32 108,28 116,22" fill="none"/>
+          <path d="M80,30 C92,25 102,18 108,12" fill="none"/>
+          <ellipse cx="44" cy="21" rx="7" ry="4" transform="rotate(-40 44 21)" fill="#5a2828" opacity=".3"/>
+          <ellipse cx="52" cy="11" rx="6" ry="3.5" transform="rotate(-55 52 11)" fill="#5a2828" opacity=".3"/>
+          <ellipse cx="65" cy="34" rx="5" ry="3" transform="rotate(-20 65 34)" fill="#5a2828" opacity=".25"/>
+          <ellipse cx="116" cy="21" rx="7" ry="4" transform="rotate(40 116 21)" fill="#5a2828" opacity=".3"/>
+          <ellipse cx="108" cy="11" rx="6" ry="3.5" transform="rotate(55 108 11)" fill="#5a2828" opacity=".3"/>
+          <ellipse cx="95" cy="34" rx="5" ry="3" transform="rotate(20 95 34)" fill="#5a2828" opacity=".25"/>
+          <circle cx="80" cy="19" r="2" fill="#5a2828" opacity=".5"/>
+          <circle cx="44" cy="20" r="1.5" fill="#5a2828" opacity=".45"/>
+          <circle cx="116" cy="20" r="1.5" fill="#5a2828" opacity=".45"/>
+          <circle cx="52" cy="10" r="1.5" fill="#5a2828" opacity=".4"/>
+          <circle cx="108" cy="10" r="1.5" fill="#5a2828" opacity=".4"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleFAQ(btn){
+  const item=btn.closest('.faq-item');
+  const was=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!was)item.classList.add('open');
+}
+
+function makePetal(){
+  const wrap=document.getElementById('petals-wrap');
+  const p=document.createElement('div');
+  const s=4+Math.random()*7;
+  const dur=12+Math.random()*10;
+  const delay=Math.random()*2;
+  p.style.cssText='position:absolute;width:'+s+'px;height:'+(s*1.5)+'px;background:radial-gradient(ellipse,rgba(110,25,50,.55),rgba(60,10,25,.18));border-radius:50% 0 50% 0;left:'+(Math.random()*100)+'%;top:-20px;animation:petalFall '+dur+'s linear '+delay+'s forwards;';
+  wrap.appendChild(p);
+  setTimeout(()=>p.remove(),(dur+delay+1)*1000);
+}
+
+for(let i=0;i<6;i++)setTimeout(makePetal,i*2400+Math.random()*800);
+setInterval(makePetal,3800);
+</script>
+</body>
+</html>

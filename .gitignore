@@ -1,5 +1,8 @@
 .pages-out/
-public/
+# Artefacts de build (régénérés par prepare-assets ; conservés en local pour le cache dev)
+public/assets/
+public/assets-manifest.json
+public/css/site-nav.css
 dist/
 node_modules/
 .wrangler/

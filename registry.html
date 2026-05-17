@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0e0b08">
+<title>Registry — Kami &amp; Gabriel</title>
+<link rel="preload" as="image" href="assets/background_phone.png" type="image/png" media="(max-width: 767px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/background_computer.png" type="image/png" media="(min-width: 768px)" fetchpriority="high">
+<link rel="stylesheet" href="/css/site-nav.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Castoro+Titling&family=Cinzel:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:transparent;
+  min-height:100vh;
+  font-family:'Cormorant Garamond',serif;
+  overflow-x:hidden;
+  position:relative;
+}
+
+.page-bg{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  width:100vw;
+  max-width:100vw;
+  height:100vh;
+  height:100dvh;
+  overflow:hidden;
+}
+.page-bg picture{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+}
+.page-bg img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  vertical-align:top;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+
+/* ── Petals ── */
+#petals-wrap{position:fixed;inset:0;pointer-events:none;z-index:2;overflow:hidden;}
+@keyframes petalFall{
+  0%  {transform:translateY(-10px) rotate(0deg) translateX(0);opacity:0;}
+  8%  {opacity:.6;}
+  92% {opacity:.3;}
+  100%{transform:translateY(102vh) rotate(340deg) translateX(35px);opacity:0;}
+}
+
+/* ── Nav ── */
+:root{
+}
+
+.page{
+  position:relative;z-index:3;
+  display:flex;flex-direction:column;align-items:center;
+  padding:calc(var(--site-nav-h) + 28px) 20px 80px;
+  min-height:100vh;
+}
+
+/* ── Main card ── */
+.main-card{
+  background:linear-gradient(170deg,#f0e2da 0%,#e8d5cb 45%,#e0cac0 100%);
+  max-width:520px;width:100%;position:relative;
+  padding:44px 36px 48px;
+  box-shadow:0 0 0 1px rgba(100,45,40,.1),0 40px 100px rgba(4,1,0,.88),0 16px 40px rgba(60,15,25,.5);
+  opacity:0;animation:riseUp 1.6s cubic-bezier(.22,1,.36,1) .3s forwards;
+}
+.main-card::before{content:'';position:absolute;inset:9px;border:.5px solid rgba(90,35,35,.2);pointer-events:none;}
+@keyframes riseUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── Card header ── */
+.card-header{text-align:center;padding-bottom:28px;border-bottom:.5px solid rgba(90,35,35,.15);margin-bottom:28px;}
+.reg-title{font-family:'Castoro Titling',serif;font-size:52px;color:#2e1218;letter-spacing:.14em;line-height:1;margin-bottom:10px;}
+.title-ornament{display:flex;align-items:center;justify-content:center;gap:0;margin:0 auto 12px;width:fit-content;}
+.title-line{width:56px;height:.5px;background:rgba(90,35,35,.35);flex-shrink:0;}
+.diam{display:block;width:6px;height:6px;background:#7a3535;transform:rotate(45deg);opacity:.45;flex-shrink:0;margin:0;}
+.card-sub{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.5em;color:rgba(60,20,20,.5);text-transform:uppercase;}
+
+/* ── Intro text ── */
+.reg-intro-bold{
+  font-family:'Cinzel',serif;font-size:10px;letter-spacing:.18em;
+  color:#2e1218;text-transform:uppercase;text-align:center;
+  line-height:1.9;margin-bottom:20px;
+}
+.reg-intro-body{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:17.5px;color:rgba(50,18,14,.75);
+  line-height:1.82;text-align:center;margin-bottom:14px;
+}
+
+/* ── Building image ── */
+.building-wrap{
+  margin:10px -10px 28px;
+  text-align:center;
+}
+.building-wrap img{
+  width:100%;
+  max-width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+}
+
+/* ── Section separator ── */
+.section-sep{
+  display:flex;align-items:center;justify-content:center;
+  gap:12px;margin:0 0 22px;
+}
+.section-sep-line{flex:1;height:.5px;background:rgba(90,35,35,.2);}
+.section-sep-label{
+  font-family:'Cinzel',serif;font-size:8px;letter-spacing:.5em;
+  color:rgba(60,20,20,.45);text-transform:uppercase;white-space:nowrap;
+}
+
+/* ── Plaque card ── */
+.plaque-wrap{
+  display:block;
+  width:100%;
+  margin:0 0 28px;
+  padding:0;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  text-align:left;
+  transition:transform .3s cubic-bezier(.22,1,.36,1), filter .3s;
+  filter:drop-shadow(0 8px 28px rgba(4,1,0,.38));
+}
+.plaque-wrap:hover{
+  transform:translateY(-3px) scale(1.015);
+  filter:drop-shadow(0 14px 40px rgba(4,1,0,.52));
+}
+.plaque-wrap img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+  pointer-events:none;
+}
+
+/* ── Choix Venmo / PayPal ── */
+.pay-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:400;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(14,8,6,.72);
+  backdrop-filter:blur(8px);
+}
+.pay-overlay.open{display:flex;}
+.pay-dialog{
+  width:100%;
+  max-width:360px;
+  background:linear-gradient(170deg,#f0e2da 0%,#e8d5cb 45%,#e0cac0 100%);
+  padding:36px 28px 32px;
+  position:relative;
+  box-shadow:0 0 0 1px rgba(100,45,40,.12),0 32px 80px rgba(4,1,0,.85);
+  animation:riseUp .45s cubic-bezier(.22,1,.36,1);
+}
+.pay-dialog::before{
+  content:'';
+  position:absolute;
+  inset:9px;
+  border:.5px solid rgba(90,35,35,.2);
+  pointer-events:none;
+}
+.pay-close{
+  position:absolute;
+  top:12px;
+  right:14px;
+  width:32px;
+  height:32px;
+  border:none;
+  background:transparent;
+  color:rgba(60,20,20,.45);
+  font-family:'Cinzel',serif;
+  font-size:18px;
+  line-height:1;
+  cursor:pointer;
+  transition:color .25s;
+}
+.pay-close:hover{color:#2e1218;}
+.pay-dialog-title{
+  font-family:'Castoro Titling',serif;
+  font-size:28px;
+  color:#2e1218;
+  letter-spacing:.1em;
+  text-align:center;
+  margin-bottom:8px;
+}
+.pay-dialog-sub{
+  font-family:'Cinzel',serif;
+  font-size:8px;
+  letter-spacing:.42em;
+  text-transform:uppercase;
+  color:rgba(60,20,20,.5);
+  text-align:center;
+  margin-bottom:24px;
+}
+.pay-options{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.pay-option{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  padding:16px 20px;
+  text-decoration:none;
+  font-family:'Cinzel',serif;
+  font-size:9.5px;
+  letter-spacing:.55em;
+  text-transform:uppercase;
+  color:rgba(232,210,195,.88);
+  background:linear-gradient(135deg,#3a1520 0%,#5a2030 50%,#3a1520 100%);
+  border:none;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  transition:all .4s;
+}
+.pay-option::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(196,163,90,.14),transparent);
+  opacity:0;
+  transition:opacity .4s;
+}
+.pay-option:hover{
+  background:linear-gradient(135deg,#4a1828 0%,#6b2338 50%,#4a1828 100%);
+  color:rgba(212,184,112,1);
+  transform:translateY(-1px);
+  box-shadow:0 10px 36px rgba(58,20,30,.55);
+}
+.pay-option:hover::before{opacity:1;}
+.pay-option:active{transform:translateY(0);}
+
+/* ── Thank you note ── */
+.card-note{
+  margin-top:6px;padding-top:22px;
+  border-top:.5px solid rgba(90,35,35,.15);
+  text-align:center;
+  font-family:'Cinzel',serif;font-size:8px;letter-spacing:.4em;
+  color:rgba(60,20,20,.45);text-transform:uppercase;line-height:2;
+}
+
+/* ── Flora ornament ── */
+.card-flora{margin-top:28px;display:flex;justify-content:center;opacity:.35;}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  .main-card{padding:36px 22px 40px;}
+  .reg-title{font-size:42px;}
+}
+</style>
+</head>
+<body>
+
+
+
+<!-- SITE_NAV -->
+
+<div class="page-bg" aria-hidden="true">
+  <picture>
+    <source media="(min-width: 768px)" srcset="assets/background_computer.png" type="image/png">
+    <img src="assets/background_phone.png" alt="" decoding="async" fetchpriority="high">
+  </picture>
+</div>
+
+<div id="petals-wrap"></div>
+
+<div class="page">
+  <div class="main-card">
+
+    <div class="card-header">
+      <div class="reg-title">Registry</div>
+      <div class="title-ornament" aria-hidden="true">
+        <span class="title-line"></span>
+        <span class="diam"></span>
+        <span class="title-line"></span>
+      </div>
+      <span class="card-sub">Kami &amp; Gabriel · June 6, 2026</span>
+    </div>
+
+    <p class="reg-intro-bold">Your presence at our wedding is<br>the greatest gift of all.</p>
+
+    <p class="reg-intro-body">As we begin this next chapter together,<br>we are currently building our future home<br>and life side by side.</p>
+
+    <p class="reg-intro-body">For those who wish to honor us with a gift,<br>we would be deeply grateful for a<br>contribution toward our home and<br>future together.</p>
+
+    <div class="building-wrap">
+      <img src="assets/location.webp" alt="Our future home — a New Orleans townhouse illustration" loading="lazy" decoding="async"/>
+    </div>
+
+    <div class="section-sep">
+      <span class="section-sep-line"></span>
+      <span class="section-sep-label">Ways to contribute</span>
+      <span class="section-sep-line"></span>
+    </div>
+
+    <button type="button" class="plaque-wrap" id="plaqueBtn" aria-haspopup="dialog" aria-controls="payOverlay">
+      <img src="assets/button_ourfuturehome.webp" alt="Our Future Home — choose how to contribute" loading="lazy" decoding="async"/>
+    </button>
+
+    <div class="card-note">
+      Thank you for being a part of our forever
+    </div>
+
+    <div class="card-flora">
+      <svg width="160" height="60" viewBox="0 0 160 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#5a2828" stroke-width=".8" opacity=".7">
+          <line x1="80" y1="55" x2="80" y2="20"/>
+          <path d="M80,38 C65,32 52,28 44,22" fill="none"/>
+          <path d="M80,30 C68,25 58,18 52,12" fill="none"/>
+          <path d="M80,38 C95,32 108,28 116,22" fill="none"/>
+          <path d="M80,30 C92,25 102,18 108,12" fill="none"/>
+          <ellipse cx="44" cy="21" rx="7" ry="4" transform="rotate(-40 44 21)" fill="#5a2828" opacity=".3"/>
+          <ellipse cx="52" cy="11" rx="6" ry="3.5" transform="rotate(-55 52 11)" fill="#5a2828" opacity=".3"/>
+          <ellipse cx="65" cy="34" rx="5" ry="3" transform="rotate(-20 65 34)" fill="#5a2828" opacity=".25"/>
+          <ellipse cx="116" cy="21" rx="7" ry="4" transform="rotate(40 116 21)" fill="#5a2828" opacity=".3"/>
+          <ellipse cx="108" cy="11" rx="6" ry="3.5" transform="rotate(55 108 11)" fill="#5a2828" opacity=".3"/>
+          <ellipse cx="95" cy="34" rx="5" ry="3" transform="rotate(20 95 34)" fill="#5a2828" opacity=".25"/>
+          <circle cx="80" cy="19" r="2" fill="#5a2828" opacity=".5"/>
+          <circle cx="44" cy="20" r="1.5" fill="#5a2828" opacity=".45"/>
+          <circle cx="116" cy="20" r="1.5" fill="#5a2828" opacity=".45"/>
+          <circle cx="52" cy="10" r="1.5" fill="#5a2828" opacity=".4"/>
+          <circle cx="108" cy="10" r="1.5" fill="#5a2828" opacity=".4"/>
+        </g>
+      </svg>
+    </div>
+
+  </div>
+</div>
+
+<div class="pay-overlay" id="payOverlay" role="dialog" aria-modal="true" aria-labelledby="payDialogTitle" hidden>
+  <div class="pay-dialog">
+    <button type="button" class="pay-close" id="payClose" aria-label="Close">&times;</button>
+    <h2 class="pay-dialog-title" id="payDialogTitle">Our Future Home</h2>
+    <p class="pay-dialog-sub">Choose how to contribute</p>
+    <div class="pay-options">
+      <a href="https://www.venmo.com/u/peach-kameron" class="pay-option" target="_blank" rel="noopener noreferrer">Venmo</a>
+      <a href="https://www.paypal.com/paypalme/KamiWeck?locale.x=en_US&amp;country.x=US" class="pay-option" target="_blank" rel="noopener noreferrer">PayPal</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function initPayChoice(){
+  const overlay=document.getElementById('payOverlay');
+  const openBtn=document.getElementById('plaqueBtn');
+  const closeBtn=document.getElementById('payClose');
+  if(!overlay||!openBtn)return;
+
+  function openPay(){
+    overlay.hidden=false;
+    overlay.classList.add('open');
+    document.body.style.overflow='hidden';
+    closeBtn.focus();
+  }
+  function closePay(){
+    overlay.classList.remove('open');
+    overlay.hidden=true;
+    document.body.style.overflow='';
+    openBtn.focus();
+  }
+
+  openBtn.addEventListener('click',openPay);
+  closeBtn.addEventListener('click',closePay);
+  overlay.addEventListener('click',function(e){
+    if(e.target===overlay)closePay();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&overlay.classList.contains('open'))closePay();
+  });
+})();
+
+function makePetal(){
+  const wrap=document.getElementById('petals-wrap');
+  const p=document.createElement('div');
+  const s=4+Math.random()*7;
+  const dur=12+Math.random()*10;
+  const delay=Math.random()*2;
+  p.style.cssText='position:absolute;width:'+s+'px;height:'+(s*1.5)+'px;background:radial-gradient(ellipse,rgba(110,25,50,.55),rgba(60,10,25,.18));border-radius:50% 0 50% 0;left:'+(Math.random()*100)+'%;top:-20px;animation:petalFall '+dur+'s linear '+delay+'s forwards;';
+  wrap.appendChild(p);
+  setTimeout(()=>p.remove(),(dur+delay+1)*1000);
+}
+for(let i=0;i<6;i++)setTimeout(makePetal,i*2400+Math.random()*800);
+setInterval(makePetal,3800);
+</script>
+</body>
+</html>
